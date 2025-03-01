@@ -14,20 +14,15 @@ use Psr\Http\Message\ResponseInterface;
  */
 class Telegram
 {
-    /** @var HttpClient HTTP Client */
-    protected HttpClient $http;
+    /** Default Telegram Bot API Base URI.*/
+    protected const API_BASE_URI = 'https://api.telegram.org';
 
-    /** @var null|string Telegram Bot API Token. */
-    protected ?string $token;
-
-    /** @var string Telegram Bot API Base URI */
-    protected string $apiBaseUri;
-
-    public function __construct(?string $token = null, ?HttpClient $httpClient = null, ?string $apiBaseUri = null)
-    {
-        $this->token = $token;
-        $this->http = $httpClient ?? new HttpClient();
-        $this->setApiBaseUri($apiBaseUri ?? 'https://api.telegram.org');
+    public function __construct(
+        protected ?string $token = null,
+        protected HttpClient $http = new HttpClient,
+        protected ?string $apiBaseUri = null
+    ) {
+        $this->setApiBaseUri($apiBaseUri ?? static::API_BASE_URI);
     }
 
     /**
@@ -159,6 +154,16 @@ class Telegram
     public function sendLocation(array $params): ?ResponseInterface
     {
         return $this->sendRequest('sendLocation', $params);
+    }
+
+    /**
+     * Send a Venue.
+     *
+     * @throws CouldNotSendNotification
+     */
+    public function sendVenue(array $params): ?ResponseInterface
+    {
+        return $this->sendRequest('sendVenue', $params);
     }
 
     /**

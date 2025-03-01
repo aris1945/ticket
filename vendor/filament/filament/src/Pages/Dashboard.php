@@ -7,14 +7,12 @@ use Filament\Support\Facades\FilamentIcon;
 use Filament\Widgets\Widget;
 use Filament\Widgets\WidgetConfiguration;
 use Illuminate\Contracts\Support\Htmlable;
-use App\Models\Ticket;
 
 class Dashboard extends Page
 {
     protected static string $routePath = '/';
 
     protected static ?int $navigationSort = -2;
-    
 
     /**
      * @var view-string
@@ -25,7 +23,7 @@ class Dashboard extends Page
     {
         return static::$navigationLabel ??
             static::$title ??
-            __('Dashboard');
+            __('filament-panels::pages/dashboard.title');
     }
 
     public static function getNavigationIcon(): string | Htmlable | null
@@ -66,6 +64,6 @@ class Dashboard extends Page
 
     public function getTitle(): string | Htmlable
     {
-        return static::$title ?? __('Dashboard');
+        return static::$title ?? __('filament-panels::pages/dashboard.title');
     }
 }

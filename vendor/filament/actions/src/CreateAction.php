@@ -10,8 +10,6 @@ use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\TicketCreated;
 
 class CreateAction extends Action
 {
@@ -74,9 +72,6 @@ class CreateAction extends Action
 
             $this->record($record);
             $form->model($record)->saveRelationships();
-
-            // Send the notification after the ticket is created
-            Notification::send($record->user, new TicketCreated($record));
 
             if ($arguments['another'] ?? false) {
                 $this->callAfter();

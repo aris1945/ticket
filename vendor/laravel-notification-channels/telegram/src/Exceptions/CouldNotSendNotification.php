@@ -25,7 +25,7 @@ final class CouldNotSendNotification extends Exception
 
         $statusCode = $exception->getResponse()->getStatusCode();
 
-        $result = json_decode($exception->getResponse()->getBody()->getContents(), false, 512, JSON_THROW_ON_ERROR);
+        $result = json_decode($exception->getResponse()->getBody()->getContents());
         $description = $result->description ?? 'no description given';
 
         return new self("Telegram responded with an error `{$statusCode} - {$description}`", 0, $exception);
@@ -45,5 +45,21 @@ final class CouldNotSendNotification extends Exception
     public static function couldNotCommunicateWithTelegram(string $message): self
     {
         return new self("The communication with Telegram failed. `{$message}`");
+    }
+
+    /**
+     * Thrown when the file cannot be opened.
+     */
+    public static function fileAccessFailed(string $file): self
+    {
+        return new self("Failed to open file: {$file}");
+    }
+
+    /**
+     * Thrown when the file identifier is invalid (ID or URL).
+     */
+    public static function invalidFileIdentifier(string $file): self
+    {
+        return new self("Invalid file identifier: {$file}");
     }
 }
