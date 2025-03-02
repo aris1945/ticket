@@ -27,6 +27,8 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Filament\Navigation\NavigationGroup;
 use App\Filament\Pages\Auth\EditProfile;
+use App\Filament\Pages\Auth\Register;
+use App\Filament\Pages\Auth\RegisterCustom;
 
 
 class AdminPanelProvider extends PanelProvider
@@ -54,6 +56,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login(LoginCustom::class)
             ->profile(EditProfile::class)
+            ->registration(Register::class)
             ->brandName('Performance Dashboard')
             ->colors([
                 'primary' => Color::Zinc,
