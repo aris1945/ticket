@@ -38,15 +38,13 @@ The easiest and most intuitive way to add access management to your Filament Pan
 - 📦 **Policy Generation**
 - 🌐 **Translations Support**
 
-## Requirements
+## Compatibility
 
-- PHP 8.1 | 8.2 | 8.3
-- Laravel v10.x | v11.x
-- Filament v3.2+
-- Spatie Permission v6.0+
-
-> [!NOTE] 
-> For **Filament 2.x** use **[2.x](https://github.com/bezhanSalleh/filament-shield/tree/2.x)** branch
+| Package Version | Filament Version |
+|-----------------|------------------|
+| [2.x](https://github.com/bezhanSalleh/filament-shield/tree/2.x)             | 2.x              |
+| **3.x**            | **3.x**             |
+| [4.x](https://github.com/bezhanSalleh/filament-shield/tree/4.x)             | 4.x              |
 
 <div class="filament-hidden">
 <b>Table of Contents</b>
@@ -274,6 +272,26 @@ In the above example the `getPermissionPrefixes()` method returns the permission
     'publish' => 'Publicar'    
 ],
 ```
+#### Third-Party Plugins Permissions
+
+To generate permissions for third-party plugins, or if you don't want to change your resource, you can specify the permissions by adding a key in the `config` file inside `permission_prefixes`:
+
+```php
+'permission_prefixes' => [
+        \Tapp\FilamentAuthenticationLog\Resources\AuthenticationLogResource::class => [
+            'view_any',
+        ],
+
+        'resource' => [
+         ...
+        ],
+
+        'page' => 'page',
+        'widget' => 'widget',
+    ],
+``` 
+
+
 
 ##### Configure Permission Identifier
 By default the permission identifier is generated as follow:
@@ -355,11 +373,11 @@ class MyPage extends Page
     use HasPageShield;
     ...
 
-    protected function beforeBooted : void() {
+    protected function beforeBooted() : void {
         ...
     }
 
-    protected function afterBooted : void() {
+    protected function afterBooted() : void {
         ...
     }
 
@@ -367,7 +385,7 @@ class MyPage extends Page
      * Hook to perform an action before redirect if the user
      * doesn't have access to the page.  
      * */
-    protected function beforeShieldRedirects : void() {
+    protected function beforeShieldRedirects() : void {
         ...
     }
 }
@@ -579,7 +597,7 @@ use BezhanSalleh\FilamentShield\Commands;
 shield:setup [--fresh] [--minimal] [--tenant=]
 
 # Install Shield for a panel
-shield:install {panel} [--tenant] [--generate-relationships]
+shield:install {panel} [--tenant]
 
 # Generate permissions/policies
 shield:generate [options]
@@ -596,14 +614,15 @@ shield:publish {panel}
 
 ### Generate Command Options
 ```bash
---all                     Generate for all entities
---option=[OPTION]         Override generator option
---resource=[RESOURCE]     Specific resources
+--all                    Generate for all entities
+--option=[OPTION]        Override generator option
+--resource=[RESOURCE]    Specific resources
 --page=[PAGE]            Specific pages  
 --widget=[WIDGET]        Specific widgets
 --exclude                Exclude entities
 --ignore-config-exclude  Ignore config excludes
 --panel[=PANEL]          Panel ID to get the components(resources, pages, widgets)
+--relationships          Generate relationships for the given panel, only works if the panel has tenancy enabled
 ```
 > [!NOTE] 
 > For setting up super-admin user when using tenancy/team feature consult the core package **[spatie/laravel-permission](https://spatie.be/docs/laravel-permission/v6/basic-usage/teams-permissions)**

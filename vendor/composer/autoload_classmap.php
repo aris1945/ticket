@@ -216,6 +216,7 @@ return array(
     'DanHarrin\\LivewireRateLimiting\\WithRateLimiting' => $vendorDir . '/danharrin/livewire-rate-limiting/src/WithRateLimiting.php',
     'Database\\Factories\\UserFactory' => $baseDir . '/database/factories/UserFactory.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
+    'Database\\Seeders\\ShieldSeeder' => $baseDir . '/database/seeders/ShieldSeeder.php',
     'Database\\Seeders\\TicketSeeder' => $baseDir . '/database/seeders/TicketSeeder.php',
     'Database\\Seeders\\UserSeeder' => $baseDir . '/database/seeders/UserSeeder.php',
     'DateError' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateError.php',

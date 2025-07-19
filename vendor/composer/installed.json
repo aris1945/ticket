@@ -71,17 +71,17 @@
         },
         {
             "name": "bezhansalleh/filament-shield",
-            "version": "3.3.5",
-            "version_normalized": "3.3.5.0",
+            "version": "3.3.9",
+            "version_normalized": "3.3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bezhanSalleh/filament-shield.git",
-                "reference": "88b6714e4d14abcb614ff3ac45114866763d1ba5"
+                "reference": "9cb6c3e9c6cdf49f41e984067f8fa2458c23d163"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bezhanSalleh/filament-shield/zipball/88b6714e4d14abcb614ff3ac45114866763d1ba5",
-                "reference": "88b6714e4d14abcb614ff3ac45114866763d1ba5",
+                "url": "https://api.github.com/repos/bezhanSalleh/filament-shield/zipball/9cb6c3e9c6cdf49f41e984067f8fa2458c23d163",
+                "reference": "9cb6c3e9c6cdf49f41e984067f8fa2458c23d163",
                 "shasum": ""
             },
             "require": {
@@ -103,7 +103,7 @@
                 "phpunit/phpunit": "^10.1",
                 "spatie/laravel-ray": "^1.37"
             },
-            "time": "2025-02-17T21:06:24+00:00",
+            "time": "2025-07-10T23:02:45+00:00",
             "type": "library",
             "extra": {
                 "laravel": {
@@ -149,7 +149,7 @@
             ],
             "support": {
                 "issues": "https://github.com/bezhanSalleh/filament-shield/issues",
-                "source": "https://github.com/bezhanSalleh/filament-shield/tree/3.3.5"
+                "source": "https://github.com/bezhanSalleh/filament-shield/tree/3.3.9"
             },
             "funding": [
                 {
